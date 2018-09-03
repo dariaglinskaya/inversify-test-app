@@ -1,19 +1,7 @@
 import { myContainer } from "../src/inversify.config";
-import * as React from 'react';
 import { Warrior } from "../src/interfaces";
 import { TYPES } from "../src/types";
-import { App } from "../src/App";
-import { mount } from 'enzyme';
 
-describe("React app", () => {
-    it('renders without crashing', () => {
-        const app = <App />;
-        
-        const wrapper = mount(app);
-
-        expect(wrapper).toBeDefined();
-    })
-});
 describe("Ninja class", () => {
     const ninja = myContainer.get<Warrior>(TYPES.Warrior);
 
