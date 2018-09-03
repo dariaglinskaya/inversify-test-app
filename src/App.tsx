@@ -58,13 +58,14 @@ export class App extends React.Component<{}, IState> {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Button onClick={() => this.modal(this.fight())}>Fight</Button>
-        <Button onClick={() => this.modal(this.sneak())}>Throw</Button>
+        <Button onClick={() => this.modal(this.fight())} className="fight-btn">Fight</Button>
+        <Button onClick={() => this.modal(this.sneak())} className="sneak-btn">Throw</Button>
         <Modal
           title="Logger"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
+          className="modal"
         >
           <p>{this.state.msg}</p>
         </Modal>
