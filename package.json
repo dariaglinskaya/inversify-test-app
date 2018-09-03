@@ -4,16 +4,20 @@
   "private": true,
   "dependencies": {
     "antd": "^3.8.4",
+    "enzyme": "^3.5.0",
+    "enzyme-adapter-react-16": "^1.3.1",
     "inversify": "^4.13.0",
+    "jest": "^23.5.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts-ts": "2.17.0",
-    "reflect-metadata": "^0.1.12"
+    "reflect-metadata": "^0.1.12",
+    "ts-jest": "^23.1.4"
   },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -22,5 +26,44 @@
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.7",
     "typescript": "^3.0.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "mapCoverage": true,
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.test.json"
+      }
+    },
+    "setupFiles": [
+      "<rootDir>/__tests__/config/test-setup.ts"
+    ],
+    "testMatch": [
+      "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/registerServiceWorker.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{tsx|ts}",
+      "!<rootDir>/src/registerServiceWorker.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

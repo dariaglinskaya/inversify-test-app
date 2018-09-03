@@ -1,21 +1,51 @@
-import { Button } from 'antd';
 import { myContainer } from "./inversify.config";
 import { TYPES } from "./types";
 import { Warrior } from "./interfaces";
 import * as React from 'react';
-
+import { Modal, Button } from 'antd';
 import './App.css';
 
 import logo from './logo.svg';
 
 const ninja = myContainer.get<Warrior>(TYPES.Warrior);
 
-export class App extends React.Component {
+export interface IState {
+  visible: boolean;
+  msg: string;
+}
+
+export class App extends React.Component<{}, IState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      msg: ''
+    }
+  }
   public fight() {
-    return ninja.fight();
+    const msg = ninja.fight();
+    return msg;
   }
   public sneak() {
-    return ninja.sneak();
+    const msg = ninja.sneak();
+    return msg;
+  }
+  handleOk = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+
+  handleCancel = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+  public modal(msg) {
+    this.setState({ visible: true, msg: msg });
+    console.log(msg);
+    console.log(this.state)
+    return
   }
   public render() {
     return (
@@ -28,8 +58,16 @@ export class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Button onClick={() => this.fight()}>Fight</Button>
-        <Button onClick={() => this.sneak()}>Throw</Button>
+        <Button onClick={() => this.modal(this.fight())}>Fight</Button>
+        <Button onClick={() => this.modal(this.sneak())}>Throw</Button>
+        <Modal
+          title="Logger"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>{this.state.msg}</p>
+        </Modal>
       </div>
     );
   }

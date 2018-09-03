@@ -6,7 +6,7 @@ import { TYPES } from "./types";
 @injectable()
 class Logger implements ILogger {
     public log(msg: string): any {
-        alert(msg);
+        return msg;
     }
 }
 
