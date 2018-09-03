@@ -43,8 +43,6 @@ export class App extends React.Component<{}, IState> {
   }
   public modal(msg) {
     this.setState({ visible: true, msg: msg });
-    console.log(msg);
-    console.log(this.state)
     return
   }
   public render() {

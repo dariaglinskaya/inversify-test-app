@@ -1,6 +1,5 @@
 import { App } from "../src/App";
-import { Button } from 'antd';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 
 describe("React app", () => {
@@ -20,7 +19,7 @@ describe("React app", () => {
 
         const wrapper = mount(app);
 
-        expect(wrapper.children().contains(child)).toBeTruthy();
+        expect(wrapper.contains(child)).toBeTruthy();
     });
     it('initiates click on button fight', () => {
         let wrapper = shallow(<App />, { disableLifecycleMethods: true });
@@ -59,4 +58,14 @@ describe("React app", () => {
         
         expect(modal).toHaveBeenCalledTimes(2);
     });
+    it('should change state after click ', () => {
+        let wrapper = shallow(<App />);
+        const btnFight = wrapper.find('.sneak-btn');
+
+        expect(wrapper.state().visible).toEqual(false);
+
+        btnFight.simulate('click');      
+        expect(wrapper.state().visible).toEqual(true);
+    });
+    
 });
