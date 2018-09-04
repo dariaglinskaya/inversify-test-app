@@ -46,7 +46,7 @@
       "<rootDir>/__tests__/config/test-setup.ts"
     ],
     "testMatch": [
-      "**/__tests__/*.+(ts|tsx|js)"
+      "**/commandPattern/__tests__/*.+(ts|tsx|js)"
     ],
     "collectCoverage": true,
     "coverageReporters": [
@@ -58,7 +58,7 @@
       "/src/registerServiceWorker.ts"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{tsx|ts}",
+      "commandPattern/**/*.{tsx|ts}",
       "!<rootDir>/src/registerServiceWorker.ts"
     ],
     "moduleNameMapper": {
